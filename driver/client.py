@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 class Client(object):
     """
-    Memcached client with connection pool
+    Memcached client implementation
     """
 
     def __init__(self, server):

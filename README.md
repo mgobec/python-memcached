@@ -1,3 +1,3 @@
 # python-memcached
 
-My assignment in python created for larning and exercise.
+My assignment in python created for learning and exercise.

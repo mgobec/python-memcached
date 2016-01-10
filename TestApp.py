@@ -5,7 +5,7 @@ import sys
 
 logging.basicConfig(stream=sys.stdout,
                     level=logging.DEBUG,
-                    format='[%(asctime)s] %(name)-12s: %(levelname)-8s %(message)s')
+                    format='[%(asctime)s] [%(levelname)s] %(name)-12s: %(message)s')
 
 
 def main():
@@ -14,8 +14,18 @@ def main():
     # connection.open()
     # connection.close()
     client = driver.Client(server)
-    result = client.set("testkey", "testvalue")
+    result = client.set("testkey1", "testvalue1")
     print(result)
+    result = client.set("testkey2", "testvalue2")
+    print(result)
+    result = client.get("testkey1")
+    print(result)
+    result = client.get("testkey2")
+    print(result)
+
+    # for i in range(0, 1000):
+    #     print(client.get("testkey"))
+
     return 0
 
 if __name__ == "__main__":

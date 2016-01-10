@@ -11,14 +11,14 @@ class Commands(object):
 
 
 class Errors(object):
-    ERROR = 'ERROR'
-    CLIENT_ERROR = 'CLIENT_ERROR'
-    SERVER_ERROR = 'SERVER_ERROR'
+    ERROR = b'ERROR'
+    CLIENT_ERROR = b'CLIENT_ERROR'
+    SERVER_ERROR = b'SERVER_ERROR'
 
 
 class StoreReply(object):
-    STORED = 'STORED'
-    NOT_STORED = 'NOT_STORED'
-    EXISTS = 'EXISTS'
-    NOT_FOUND = 'NOT_FOUND'
+    STORED = b'STORED'
+    NOT_STORED = b'NOT_STORED'
+    EXISTS = b'EXISTS'
+    NOT_FOUND = b'NOT_FOUND'
 

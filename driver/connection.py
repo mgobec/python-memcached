@@ -25,7 +25,6 @@ class Connection(object):
 
         self.server = server
         self.socket = None
-        self.buffer = b''
 
     def open(self):
         """
@@ -78,24 +77,17 @@ class Connection(object):
             return None
 
         self.socket = new
-        self.buffer = b''
 
         return new
 
-    def receive(self, size):
+    def read(self, size =_RECEIVE_SIZE):
         """
         Receive data from socket
         :param size: Size of data to receive
         :return: Received data
         """
-        buff = self.buffer
-
-        while len(buff) < size:
-            data = self.socket.recv(max(size - len(buff), 4096))
-            log.debug("Received data: %s" % data)
-            buff += data
-            if not data:
-                raise DriverConnectionException("Received 0 bytes but expected %d" % size)
-
-        self.buffer = buff[size:]
-        return buff[:size]
+        try:
+            return self.socket.recv(size)
+        except IOError as ex:
+            log.error("Error while reading from socket", ex)
+            raise

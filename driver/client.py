@@ -53,7 +53,7 @@ class Client(object):
         raise DriverUnknownException(
             "Received unexpected response from the memcached instance %s" % str(result))
 
-    def set(self, key, value, expire=0, noreply=False):
+    def set(self, key, value, expire=0, noreply=True):
         if not self.connection.socket:
             self.connection.open()
 

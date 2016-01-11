@@ -26,9 +26,9 @@ class Client(object):
         if not self.connection.socket:
             self.connection.open()
 
-        command = (b'get' +
-                   b' ' + _encode(key) +
-                   Constants.END_LINE)
+        command = b'get' + \
+                  b' ' + _encode(key) + \
+                  Constants.END_LINE
 
         try:
             self.connection.send(command)
@@ -69,13 +69,13 @@ class Client(object):
         if noreply:
             arguments += b' noreply'
 
-        command = (b'set' +
-                   b' ' + _encode(key) +
-                   b' ' + _encode(flags) +
-                   b' ' + _encode(expire) +
-                   b' ' + _encode(len(value)) +
-                   arguments + Constants.END_LINE +
-                   value + Constants.END_LINE)
+        command = b'set' + \
+                  b' ' + _encode(key) + \
+                  b' ' + _encode(flags) + \
+                  b' ' + _encode(expire) + \
+                  b' ' + _encode(len(value)) + \
+                  arguments + Constants.END_LINE + \
+                  value + Constants.END_LINE
 
         try:
             self.connection.send(command)

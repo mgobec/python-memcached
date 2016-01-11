@@ -33,8 +33,8 @@ class Connection(object):
         """
         if self._open_socket():
             log.debug("Connection open")
-            return 1
-        return 0
+            return True
+        return False
 
     def close(self):
         """

@@ -1,8 +1,6 @@
 import socket
 import logging
 
-from driver.exceptions import *
-
 
 _DEAD_RETRY = 30  # number of seconds before retrying a dead server.
 _SOCKET_TIMEOUT = 3  # number of seconds before sockets timeout.
@@ -33,8 +31,8 @@ class Connection(object):
         """
         if self._open_socket():
             log.debug("Connection open")
-            return 1
-        return 0
+            return True
+        return False
 
     def close(self):
         """
@@ -80,7 +78,7 @@ class Connection(object):
 
         return new
 
-    def read(self, size =_RECEIVE_SIZE):
+    def read(self, size=_RECEIVE_SIZE):
         """
         Receive data from socket
         :param size: Size of data to receive
